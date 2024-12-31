@@ -4,11 +4,15 @@
 #### הגעת למבחן או יצאת מטומטם
 
 **גרסה:** 1.0  
+<<<<<<< HEAD
+**מפתחי המשחק:** ערן צרום ואיתמר שפיצר
+
+[רכיבים רשמיים](https://github.com/gamedev-ariel/AURace/wiki)
+=======
 **מפתחי המשחק:** ערן צארום ואיתמר שפיצר
 
 [רכיבים רשמיים](https://github.com/gamedev-ariel/AURace/wiki)
 [לינק לitch](https://eran-david.itch.io/aurace)
-
 
 ---
 

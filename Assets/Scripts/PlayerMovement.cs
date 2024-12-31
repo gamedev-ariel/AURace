@@ -77,4 +77,12 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.sprite = currentDirectionSprites[animationIndex];
         }
     }
+
+    public void SetSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
 }
+
+
