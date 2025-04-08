@@ -9,5 +9,9 @@ public class PlayerSpawner : MonoBehaviour
         {
             transform.position = spawnPosition;
         }
+        //if (PlayerSpawnManager.Instance.TryGetCoffeeState(out bool coffeeState, out float boostDuration))
+        //{
+        //    CoffeeBoost.
+        //}
     }
 }
