@@ -16,28 +16,28 @@
 
 //    void Start()
 //    {
-//        // отмйн аъ соп дтлбш еретм аеъе мошлж доск
+//        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 //        Cursor.lockState = CursorLockMode.Locked;
 //    }
 
 //    void Update()
 //    {
-//        // --- ъжежъ оби (тлбш) ---
+//        // --- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ) ---
 //        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 //        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
 //        xRotation -= mouseY;
-//        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // орйтъ щбйшъ офшчъ (ма мдсълм азешд омотмд)
+//        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
 
-//        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f); // сйбеб доцмод мотмд/моид
-//        transform.Rotate(Vector3.up * mouseX); // сйбеб двеу йойрд/щоамд
+//        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ
+//        transform.Rotate(Vector3.up * mouseX); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅ
 
-//        // --- ъжежъ веу (очмгъ) ---
+//        // --- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ) ---
 //        isGrounded = controller.isGrounded;
 
 //        if (isGrounded && velocity.y < 0)
 //        {
-//            velocity.y = -2f; // айфес одйшеъ рфймд лщарзре тм дшцфд
+//            velocity.y = -2f; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 //        }
 
 //        float x = Input.GetAxis("Horizontal");
@@ -46,13 +46,13 @@
 //        Vector3 move = transform.right * x + transform.forward * z;
 //        controller.Move(move * speed * Time.deltaTime);
 
-//        // --- чфйцд ---
+//        // --- пїЅпїЅпїЅпїЅпїЅ ---
 //        if (Input.GetButtonDown("Jump") && isGrounded)
 //        {
 //            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 //        }
 
-//        // --- вшбйицйд ---
+//        // --- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ---
 //        velocity.y += gravity * Time.deltaTime;
 //        controller.Move(velocity * Time.deltaTime);
 //    }
@@ -61,15 +61,15 @@
 
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement3D : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 8f;            // одйшеъ дмйлд
+    public float speed = 8f;            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
-    public float pushPower = 2.0f;      // лез гзйфд щм зфцйн
+    public float pushPower = 2.0f;      // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
-    public Transform cameraTransform;
+    public Transform cameraTransform;   // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ
     public float mouseSensitivity = 100f;
 
     Vector3 velocity;
@@ -78,65 +78,69 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // ретм аъ дтлбш
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        // --- ъжежъ оби ---
+        // 1. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (Look)
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (90 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ)
 
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ
+        transform.Rotate(Vector3.up * mouseX); // пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅ
 
-        // --- ъжежъ веу ---
-        isGrounded = controller.isGrounded;
+        // 2. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (Move)
+        isGrounded = controller.isGrounded; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -2f; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅ"
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal"); // A, D
+        float z = Input.GetAxis("Vertical");   // W, S
 
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
-        // --- чфйцд ---
+        // 3. пїЅпїЅпїЅпїЅпїЅ (Jump)
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: v = sqrt(h * -2 * g)
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        // 4. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (Gravity)
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
 
-    // --- дферчцйд щгезфъ шйдеи ---
+    // 5. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (Push)
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody body = hit.collider.attachedRigidbody;
 
-        // ан айп веу фйжйчмй ае щдеа чйрий - ам ътщд лмен
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Rigidbody пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ Kinematic (пїЅпїЅпїЅпїЅ)
         if (body == null || body.isKinematic)
         {
             return;
         }
 
-        // ма мгзеу гбшйн лмфй оид (лое шцфд)
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
         if (hit.moveDirection.y < -0.3)
         {
             return;
         }
 
-        // зйщеб лйееп дгзйфд
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-
-        // дфтмъ длез
-        body.velocity = pushDir * pushPower;
+        body.linearVelocity = pushDir * pushPower;
     }
 }
