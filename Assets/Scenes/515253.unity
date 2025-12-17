@@ -841,17 +841,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7221660896754883362, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221660896754883362, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
+      propertyPath: field of view
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221660896754883362, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221660896754883362, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221660896754883362, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
+      propertyPath: orthographic size
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7411599923093001522, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 8992776893485371957, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992776893485371957, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8992776893485371957, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8992776893485371957, guid: 4dc251cb389c3ad4a9309925d0ed741f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2821,6 +2845,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!483693784 &1227060655 stripped
+TilemapRenderer:
+  m_CorrespondingSourceObject: {fileID: 3958293074168003756, guid: cb321959deea9724997258ce46008d94, type: 3}
+  m_PrefabInstance: {fileID: 1848543009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255703334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4183395764985626049, guid: f6eda3a75c8ad4349b6187961fa6bf93, type: 3}
@@ -2944,14 +2973,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1446049226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55dbf1b14ebdde34a84a0e48f742265e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cdeeddee05f52745ad74a2087ed0a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  minX: -5.19
-  maxX: 12.99
-  minY: -0.38
-  maxY: 0.6
+  mapRenderer: {fileID: 1227060655}
 --- !u!1 &1505515424
 GameObject:
   m_ObjectHideFlags: 0
