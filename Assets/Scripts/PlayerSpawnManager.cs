@@ -7,7 +7,7 @@ public class PlayerSpawnManager : MonoBehaviour
     private Vector3 spawnPosition;
     private bool hasSpawnPosition = false;
 
-    private bool hasCoffee = false;
+    public bool hasCoffee = false;
     //private bool BoostActive = false;
     private float coffeeBoostDuration = 0f;
 
