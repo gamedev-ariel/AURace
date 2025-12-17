@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32efcda6ba457384c8122f938649d7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Auditorium51
 --- !u!1 &23691879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32efcda6ba457384c8122f938649d7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Auditorium51
 --- !u!1 &639392313
 GameObject:
   m_ObjectHideFlags: 0
