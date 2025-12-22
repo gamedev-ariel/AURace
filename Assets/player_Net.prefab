@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coffeeIcon: {fileID: 0}
-  playerModel: {fileID: 0}
+  playerModel: {fileID: 6917949335698179308}
   speedMultiplier: 2
   boostDuration: 5
   maxCoffeeCount: 3

@@ -36,12 +36,31 @@
 //        }
 //    }
 
-//    // --- תיקוני גרסאות קריטיים (כאן היו השגיאות) ---
+//    // --- טיפול בקלט (כאן השינוי הגדול) ---
 
-//    // תיקון 1: OnConnectRequest החדש (בלי Ambassador)
+//    public void OnInput(NetworkRunner runner, NetworkInput input)
+//    {
+//        var data = new NetworkInputData();
+
+//        // מיפוי כפתורים למבנה הרשת
+//        if (Input.GetKey(KeyCode.R))
+//            data.buttons.Set(MyButtons.Boost, true);
+
+//        if (Input.GetKey(KeyCode.Space))
+//            data.buttons.Set(MyButtons.Repel, true);
+
+//        // אם תרצה להוסיף תזוזה בעתיד דרך Fusion Input:
+//        // data.movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+//        input.Set(data);
+//    }
+
+//    // --- תיקוני גרסאות קריטיים ---
+
+//    // תיקון 1: OnConnectRequest
 //    public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
 
-//    // תיקון 2: OnConnectFailed החדש
+//    // תיקון 2: OnConnectFailed
 //    public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
 
 //    // תיקון 3: ReliableKey ב-DataReceived
@@ -51,8 +70,7 @@
 //    public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress) { }
 
 
-//    // --- שאר הממשק (Boilerplate - להשאיר ריק) ---
-//    public void OnInput(NetworkRunner runner, NetworkInput input) { }
+//    // --- שאר הממשק (Boilerplate) ---
 //    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
 //    public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
 //    public void OnConnectedToServer(NetworkRunner runner) { }
@@ -66,6 +84,20 @@
 //    public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
 //    public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
 //    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
+//}
+
+//// --- מבני נתונים חיצוניים (חובה שיהיו כאן כדי שהסקריפטים האחרים יכירו אותם) ---
+
+//public struct NetworkInputData : INetworkInput
+//{
+//    public NetworkButtons buttons;
+//    // public Vector2 movementInput; // לשימוש עתידי אם תרצה
+//}
+
+//public enum MyButtons
+//{
+//    Boost = 0, // כפתור 0 ברשת מייצג בוסט (R)
+//    Repel = 1  // כפתור 1 ברשת מייצג הדיפה (Space)
 //}
 
 
@@ -85,19 +117,23 @@ public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
 
     async void Start()
     {
+        // --- תיקון קריטי: מניעת ניתוק במעבר סצנה ---
+        // מוודא שהאובייקט הזה (שמחזיק את החיבור) לא נמחק כשטוענים שלב חדש
+        DontDestroyOnLoad(gameObject);
+
         _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
 
         await _runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,
-            SessionName = "TestRoom",
+            SessionName = "TestRoom", // וודא שכולם נכנסים לאותו חדר
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
     }
 
-    // --- אירועים מרכזיים (לוגיקה) ---
+    // --- אירועים ולוגיקה ---
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
@@ -107,41 +143,25 @@ public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    // --- טיפול בקלט (כאן השינוי הגדול) ---
-
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         var data = new NetworkInputData();
 
-        // מיפוי כפתורים למבנה הרשת
+        // מיפוי כפתורים ל-Fusion
         if (Input.GetKey(KeyCode.R))
             data.buttons.Set(MyButtons.Boost, true);
 
         if (Input.GetKey(KeyCode.Space))
             data.buttons.Set(MyButtons.Repel, true);
 
-        // אם תרצה להוסיף תזוזה בעתיד דרך Fusion Input:
-        // data.movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
         input.Set(data);
     }
 
-    // --- תיקוני גרסאות קריטיים ---
-
-    // תיקון 1: OnConnectRequest
+    // --- ממשק Fusion (Boilerplate) ---
     public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
-
-    // תיקון 2: OnConnectFailed
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
-
-    // תיקון 3: ReliableKey ב-DataReceived
     public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data) { }
-
-    // תיקון 4: ReliableKey ב-DataProgress
     public void OnReliableDataProgress(NetworkRunner runner, PlayerRef player, ReliableKey key, float progress) { }
-
-
-    // --- שאר הממשק (Boilerplate) ---
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
     public void OnConnectedToServer(NetworkRunner runner) { }
@@ -157,16 +177,15 @@ public class NetworkRunnerHandler : MonoBehaviour, INetworkRunnerCallbacks
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
 }
 
-// --- מבני נתונים חיצוניים (חובה שיהיו כאן כדי שהסקריפטים האחרים יכירו אותם) ---
-
+// --- הגדרות חיצוניות (כדי למנוע שגיאות כפילות) ---
+// וודא שאין לך קובץ אחר בשם NetworkInputData.cs שמגדיר את זה שוב!
 public struct NetworkInputData : INetworkInput
 {
     public NetworkButtons buttons;
-    // public Vector2 movementInput; // לשימוש עתידי אם תרצה
 }
 
 public enum MyButtons
 {
-    Boost = 0, // כפתור 0 ברשת מייצג בוסט (R)
-    Repel = 1  // כפתור 1 ברשת מייצג הדיפה (Space)
+    Boost = 0,
+    Repel = 1
 }

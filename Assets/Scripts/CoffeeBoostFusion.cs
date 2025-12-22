@@ -1,51 +1,315 @@
-using UnityEngine;
+//using UnityEngine;
+//using Fusion;
+
+//public class CoffeeBoostFusion : NetworkBehaviour
+//{
+//    [Header("UI & References")]
+//    public GameObject coffeeIcon; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½
+//    public GameObject playerModel; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+
+//    [Header("Settings")]
+//    public float speedMultiplier = 2f;
+//    public float boostDuration = 5f;
+//    public int maxCoffeeCount = 3;
+
+//    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+//    [Networked] public NetworkBool HasCoffee { get; set; }
+//    [Networked] public NetworkBool IsBoostActive { get; set; }
+
+//    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+//    [Networked] private TickTimer BoostTimer { get; set; }
+
+//    private float originalSpeed;
+//    private PlayerMovement_Fusion playerMovement; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+//    private int currentCoffeeCount = 0;
+
+//    public override void Spawned()
+//    {
+//        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+//        playerMovement = GetComponent<PlayerMovement_Fusion>();
+
+//        if (playerMovement != null)
+//        {
+//            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ moveSpeed ï¿½ï¿½ï¿½ï¿½ï¿½
+//            // originalSpeed = playerMovement.moveSpeed; 
+//            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//            originalSpeed = 5f;
+//        }
+
+//        if (coffeeIcon != null) coffeeIcon.SetActive(false);
+//    }
+
+//    public override void FixedUpdateNetwork()
+//    {
+//        // 1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//        if (GetInput(out NetworkInputData data))
+//        {
+//            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ R (Boost)
+//            if (data.buttons.IsSet(MyButtons.Boost))
+//            {
+//                if (HasCoffee && !IsBoostActive)
+//                {
+//                    ActivateBoost();
+//                }
+//            }
+//        }
+
+//        // 2. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+//        if (IsBoostActive)
+//        {
+//            if (BoostTimer.Expired(Runner))
+//            {
+//                EndBoost();
+//            }
+//        }
+
+//        // 3. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½
+//        if (coffeeIcon != null)
+//        {
+//            coffeeIcon.SetActive(HasCoffee && !IsBoostActive);
+//        }
+//    }
+
+//    private void ActivateBoost()
+//    {
+//        HasCoffee = false;
+//        IsBoostActive = true;
+
+//        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+//        BoostTimer = TickTimer.CreateFromSeconds(Runner, boostDuration);
+
+//        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+//        if (playerMovement != null)
+//        {
+//            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//            playerMovement.moveSpeed = originalSpeed * speedMultiplier;
+//        }
+//    }
+
+//    private void EndBoost()
+//    {
+//        IsBoostActive = false;
+
+//        if (playerMovement != null)
+//        {
+//            playerMovement.moveSpeed = originalSpeed;
+//        }
+//    }
+
+//    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½)
+//    private void OnTriggerEnter2D(Collider2D collision)
+//    {
+//        if (!Object.HasStateAuthority) return;
+
+//        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+//        if ((collision.gameObject.name.Contains("BlockedZone"))
+//            && currentCoffeeCount < maxCoffeeCount
+//            && !IsBoostActive)
+//        {
+//            HasCoffee = true;
+//            currentCoffeeCount++;
+//        }
+//    }
+//}
+
+//---------------------------------------------------WORKING V -------------------------------------------------
+
+//using UnityEngine;
+//using Fusion;
+
+//public class CoffeeBoostFusion : NetworkBehaviour
+//{
+//    [Header("UI & References")]
+//    public GameObject coffeeIcon;
+
+//    [Header("Settings")]
+//    public float speedMultiplier = 2f;
+//    public float boostDuration = 5f;
+//    public int maxCoffeeCount = 3;
+
+//    [Networked] public NetworkBool HasCoffee { get; set; }
+//    [Networked] public NetworkBool IsBoostActive { get; set; }
+//    [Networked] private TickTimer BoostTimer { get; set; }
+
+//    private float originalSpeed;
+//    private PlayerMovement_Fusion playerMovement;
+//    private int currentCoffeeCount = 0;
+
+//    public override void Spawned()
+//    {
+//        playerMovement = GetComponent<PlayerMovement_Fusion>();
+//        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+//        originalSpeed = 5f;
+
+//        // --- ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) ---
+//        if (Object.HasStateAuthority) // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        {
+//            if (PlayerDataBackup.TryLoad(Object.InputAuthority, out var savedData))
+//            {
+//                HasCoffee = savedData.HasCoffee;
+//                IsBoostActive = savedData.IsBoostActive;
+
+//                // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+//                if (IsBoostActive)
+//                {
+//                    ActivateBoost();
+//                }
+//            }
+//        }
+
+//        UpdateVisuals();
+//    }
+
+//    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+//    public override void Despawned(NetworkRunner runner, bool hasState)
+//    {
+//        if (Object.HasStateAuthority)
+//        {
+//            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+//            PlayerDataBackup.Save(Object.InputAuthority, HasCoffee, IsBoostActive);
+//        }
+//    }
+
+//    public override void FixedUpdateNetwork()
+//    {
+//        if (GetInput(out NetworkInputData data))
+//        {
+//            if (data.buttons.IsSet(MyButtons.Boost))
+//            {
+//                if (HasCoffee && !IsBoostActive) ActivateBoost();
+//            }
+//        }
+
+//        if (IsBoostActive && BoostTimer.Expired(Runner))
+//        {
+//            EndBoost();
+//        }
+
+//        UpdateVisuals();
+//    }
+
+//    private void UpdateVisuals()
+//    {
+//        if (coffeeIcon != null) coffeeIcon.SetActive(HasCoffee && !IsBoostActive);
+//    }
+
+//    private void ActivateBoost()
+//    {
+//        HasCoffee = false;
+//        IsBoostActive = true;
+//        BoostTimer = TickTimer.CreateFromSeconds(Runner, boostDuration);
+//        if (playerMovement != null) playerMovement.moveSpeed = originalSpeed * speedMultiplier;
+//    }
+
+//    private void EndBoost()
+//    {
+//        IsBoostActive = false;
+//        if (playerMovement != null) playerMovement.moveSpeed = originalSpeed;
+//    }
+
+//    private void OnTriggerEnter2D(Collider2D collision)
+//    {
+//        if (!Object.HasStateAuthority) return;
+
+//        if ((collision.gameObject.name.Contains("BlockedZone")) && currentCoffeeCount < maxCoffeeCount && !IsBoostActive)
+//        {
+//            HasCoffee = true;
+//            currentCoffeeCount++;
+//        }
+//    }
+//}
+
+
+
+//---------------------------------------------------WORKING V -------------------------------------------------
+
+
+
 using UnityEngine;
 using Fusion;
 
 public class CoffeeBoostFusion : NetworkBehaviour
 {
     [Header("UI & References")]
-    public GameObject coffeeIcon; // âøåø ìëàï àú äàéé÷åï ùðîöà áúåê äôøä-ôàá
-    public GameObject playerModel; // äîåãì äååéæåàìé (àåôöéåðìé)
+    public GameObject coffeeIcon;
+    public GameObject playerModel; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     [Header("Settings")]
     public float speedMultiplier = 2f;
     public float boostDuration = 5f;
     public int maxCoffeeCount = 3;
 
-    // îùúðé øùú - îñúðëøðéí àåèåîèéú ìëåìí
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     [Networked] public NetworkBool HasCoffee { get; set; }
     [Networked] public NetworkBool IsBoostActive { get; set; }
-
-    // èééîø øùú
     [Networked] private TickTimer BoostTimer { get; set; }
 
     private float originalSpeed;
-    private PlayerMovement_Fusion playerMovement; // äñ÷øéôè úðåòä ùì äîåìèéôìééø ùìê
+    private PlayerMovement_Fusion playerMovement;
     private int currentCoffeeCount = 0;
 
     public override void Spawned()
     {
-        // îùéëú øëéá äúðåòä (ååãà ùäùí úåàí ìñ÷øéôè äúðåòä ùìê)
         playerMovement = GetComponent<PlayerMovement_Fusion>();
 
-        if (playerMovement != null)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+        originalSpeed = 5f;
+        if (playerMovement != null) originalSpeed = playerMovement.moveSpeed;
+
+        // --- ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½) ---
+        if (Object.HasStateAuthority)
         {
-            // ððéç ùéù îùúðä moveSpeed ôåîáé
-            // originalSpeed = playerMovement.moveSpeed; 
-            // áîéãä åàéï âéùä, úöèøê ìäâãéø éãðéú àå ìçùåó àåúå
-            originalSpeed = 5f;
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+            if (PlayerDataBackup.TryLoad(Object.InputAuthority, out var savedData))
+            {
+                // 1. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                HasCoffee = savedData.HasCoffee;
+                IsBoostActive = savedData.IsBoostActive;
+
+                // 2. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½')
+                if (savedData.CustomSpawnPosition.HasValue)
+                {
+                    Debug.Log($"Teleporting player to saved position: {savedData.CustomSpawnPosition.Value}");
+
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                    transform.position = savedData.CustomSpawnPosition.Value;
+
+                    // ï¿½ï¿½ ï¿½ï¿½ Rigidbody2D, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    if (TryGetComponent<Rigidbody2D>(out var rb))
+                    {
+                        rb.position = savedData.CustomSpawnPosition.Value;
+                        rb.linearVelocity = Vector2.zero; // Unity 6 / 2023+ (ï¿½ï¿½ï¿½ï¿½ rb.velocity)
+                    }
+                }
+
+                // 3. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                if (IsBoostActive)
+                {
+                    ActivateBoost();
+                }
+            }
         }
 
-        if (coffeeIcon != null) coffeeIcon.SetActive(false);
+        UpdateVisuals();
+    }
+
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½)
+    // ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        if (Object.HasStateAuthority)
+        {
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+            PlayerDataBackup.Save(Object.InputAuthority, HasCoffee, IsBoostActive);
+        }
     }
 
     public override void FixedUpdateNetwork()
     {
-        // 1. ÷áìú ÷ìè îäùç÷ï
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (Input)
         if (GetInput(out NetworkInputData data))
         {
-            // áãé÷ä àí ìçöå R (Boost)
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (R)
             if (data.buttons.IsSet(MyButtons.Boost))
             {
                 if (HasCoffee && !IsBoostActive)
@@ -55,7 +319,7 @@ public class CoffeeBoostFusion : NetworkBehaviour
             }
         }
 
-        // 2. ðéäåì æîï äáåñè (øõ áùøú åáì÷åçåú)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         if (IsBoostActive)
         {
             if (BoostTimer.Expired(Runner))
@@ -64,7 +328,11 @@ public class CoffeeBoostFusion : NetworkBehaviour
             }
         }
 
-        // 3. òãëåï åéæåàìé (äàéé÷åï) ìëåìí
+        UpdateVisuals();
+    }
+
+    private void UpdateVisuals()
+    {
         if (coffeeIcon != null)
         {
             coffeeIcon.SetActive(HasCoffee && !IsBoostActive);
@@ -76,13 +344,12 @@ public class CoffeeBoostFusion : NetworkBehaviour
         HasCoffee = false;
         IsBoostActive = true;
 
-        // äôòìú èééîø øùú
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         BoostTimer = TickTimer.CreateFromSeconds(Runner, boostDuration);
 
-        // ùéðåé îäéøåú (ìåâé÷ä úìåéä áñ÷øéôè äúðåòä ùìê)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (playerMovement != null)
         {
-            // ãåâîä ìùéðåé îäéøåú
             playerMovement.moveSpeed = originalSpeed * speedMultiplier;
         }
     }
@@ -91,18 +358,18 @@ public class CoffeeBoostFusion : NetworkBehaviour
     {
         IsBoostActive = false;
 
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (playerMovement != null)
         {
             playerMovement.moveSpeed = originalSpeed;
         }
     }
 
-    // àéñåó ÷ôä (ø÷ äùøú îçìéè)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!Object.HasStateAuthority) return;
 
-        // áãé÷ä îåì àæåøé ä÷ôä (úåàí ì÷åã äî÷åøé ùìê)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½)
         if ((collision.gameObject.name.Contains("BlockedZone"))
             && currentCoffeeCount < maxCoffeeCount
             && !IsBoostActive)
