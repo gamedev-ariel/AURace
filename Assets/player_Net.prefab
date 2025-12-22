@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1745529211484767360}
   - component: {fileID: 5882817190075554020}
   - component: {fileID: 1118233015149751412}
+  - component: {fileID: 5718600790772439563}
   m_Layer: 0
   m_Name: player_Net
   m_TagString: Player
@@ -197,6 +198,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 5882817190075554020}
   - {fileID: 1118233015149751412}
+  - {fileID: 5718600790772439563}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &5882817190075554020
 MonoBehaviour:
@@ -249,3 +251,24 @@ MonoBehaviour:
   - {fileID: 6028477179474435169, guid: d808526be20014e4c8bb5b0597e75c13, type: 3}
   moveSpeed: 5
   animationSpeed: 0.2
+--- !u!114 &5718600790772439563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917949335698179308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1cf54b800ed8f48b4212531c995752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coffeeIcon: {fileID: 0}
+  playerModel: {fileID: 0}
+  speedMultiplier: 2
+  boostDuration: 5
+  maxCoffeeCount: 3
+  _HasCoffee:
+    _value: 0
+  _IsBoostActive:
+    _value: 0

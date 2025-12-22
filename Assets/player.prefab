@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7301977ca284d40bdb48ec88111f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeIcon: {fileID: 0}
+  coffeeIcon: {fileID: 4713524891515353502, guid: f814b122f2e1c274389d5096984dbd52, type: 3}
   player: {fileID: 610921851081969048}
   speedMultiplier: 2
   boostDuration: 10
