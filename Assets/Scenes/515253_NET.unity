@@ -2017,7 +2017,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1745529211484767360, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
       propertyPath: SortKey
-      value: 2421731875
+      value: 37809264
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718600790772439563, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
+      propertyPath: coffeeIcon
+      value: 
+      objectReference: {fileID: 6719101455194869678, guid: 80eb1cc6ad4f70d42a89d27bb12bab31, type: 3}
+    - target: {fileID: 5718600790772439563, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
+      propertyPath: pressRPrompt
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6917949335698179308, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
       propertyPath: m_Name
@@ -2028,7 +2036,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8646064342410677174, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
+    - {fileID: 7290845554737423285, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
+    - {fileID: 6428963126644143469, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61ed8187f35d81043b97073570c3997e, type: 3}
