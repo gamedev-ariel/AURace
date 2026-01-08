@@ -392,7 +392,7 @@ public class PlayerMovementHome : MonoBehaviour
     // Check if the player is near an object with Collider2D
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.CompareTag("base")) // Replace "base" with your desired tag
+        if (collider.CompareTag("Pickup")) // Replace "base" with your desired tag
         {
             nearbyObject = collider.gameObject;
             isNearObject = true;
@@ -401,7 +401,7 @@ public class PlayerMovementHome : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("base")) // Replace "base" with your desired tag
+        if (collider.CompareTag("Pickup")) // Replace "base" with your desired tag
         {
             nearbyObject = null;
             isNearObject = false;

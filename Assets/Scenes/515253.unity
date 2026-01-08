@@ -600,8 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3566c1e54b2fe4398d134fe3a4c3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Library
-  targetSpawnCoordinate: 20
+  targetSceneName: 
+  targetSpawnCoordinate: 0
   isHorizontalTransition: 1
   spawnOffset: 0
 --- !u!114 &163606652
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf20a93f0f641854484cfb708e6908b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Library
+  nextSceneName: Level2
 --- !u!1 &169353628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &463782760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,7 +2085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 610921851081969048, guid: c68f963b723f28244bbb6faa97e3afe8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7855867047848989709, guid: c68f963b723f28244bbb6faa97e3afe8, type: 3}
       propertyPath: m_LocalPosition.x
