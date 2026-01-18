@@ -3148,7 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d2abb1cbdca0419a7243dde059625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 10
+  timeRemaining: 40
   timerIsRunning: 0
   gameOverSceneName: GameOver
 --- !u!114 &1109026868

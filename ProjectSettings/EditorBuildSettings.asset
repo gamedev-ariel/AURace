@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/class3D.unity
     guid: dccaa3725ee0e4144b2213bc29754bca
   - enabled: 1
-    path: Assets/Scenes/bedroom.unity
+    path: Assets/Scenes/DONT NEED/bedroom.unity
     guid: 226ac979206904940a04abb2306f274a
   - enabled: 1
     path: Assets/Scenes/dwarf.unity
@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/bedroom 1.unity
     guid: 24cd23c173314d44ba2c69e8538c3bd7
+  - enabled: 1
+    path: Assets/Scenes/Gameover.unity
+    guid: 43bd188f56dbfe148810d16a1f764a56
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

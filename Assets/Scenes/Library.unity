@@ -2120,6 +2120,8 @@ MonoBehaviour:
   hasCoffee: 0
   savedBoostDuration: 5
   hasWinningItem: 0
+  currentMatchTime: 300
+  isTimerRunning: 0
 --- !u!4 &995123194
 Transform:
   m_ObjectHideFlags: 0
@@ -2329,7 +2331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652958978}
   - component: {fileID: 1652958977}
-  - component: {fileID: 1652958976}
+  - component: {fileID: 1652958979}
   m_Layer: 0
   m_Name: time
   m_TagString: Untagged
@@ -2337,21 +2339,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1652958976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652958975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188d2abb1cbdca0419a7243dde059625, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeRemaining: 300
-  timerIsRunning: 0
-  gameOverSceneName: GameOver
 --- !u!114 &1652958977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,6 +2367,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1652958979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652958975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188d2abb1cbdca0419a7243dde059625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSceneName: GameOver
+  timeRemaining: 0
 --- !u!1 &1657355326
 GameObject:
   m_ObjectHideFlags: 0
@@ -3507,5 +3508,5 @@ SceneRoots:
   - {fileID: 686608567}
   - {fileID: 995123194}
   - {fileID: 1414592708}
-  - {fileID: 2105206774}
   - {fileID: 1652958978}
+  - {fileID: 2105206774}
