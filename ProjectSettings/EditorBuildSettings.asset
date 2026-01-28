@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/main.unity
+    guid: 1f690a3bba50794449723b0122e0c07c
+  - enabled: 1
+    path: Assets/Scenes/JumpMenu.unity
+    guid: 0455788cf5662ff468135d3bed24292c
+  - enabled: 1
     path: Assets/Scenes/515253.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -15,17 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/hallway.unity
     guid: 1bffa8b685f29864a86ff9490ec747e5
   - enabled: 1
-    path: Assets/Scenes/class3D.unity
-    guid: dccaa3725ee0e4144b2213bc29754bca
-  - enabled: 1
-    path: Assets/Scenes/DONT NEED/bedroom.unity
-    guid: 226ac979206904940a04abb2306f274a
-  - enabled: 1
     path: Assets/Scenes/dwarf.unity
     guid: ec16347e98a885040b233170c51d6cb5
-  - enabled: 1
-    path: Assets/Scenes/JumpMenu.unity
-    guid: 0455788cf5662ff468135d3bed24292c
   - enabled: 1
     path: Assets/Scenes/kitchen.unity
     guid: a994de62cdf6ee14a9cdfa44862aa688
@@ -33,20 +30,14 @@ EditorBuildSettings:
     path: Assets/Scenes/living_room.unity
     guid: 602f760ab32059f429a21d84309b306d
   - enabled: 1
-    path: Assets/Scenes/main.unity
-    guid: 1f690a3bba50794449723b0122e0c07c
+    path: Assets/Scenes/bedroom 1.unity
+    guid: 24cd23c173314d44ba2c69e8538c3bd7
   - enabled: 1
-    path: Assets/Scenes/DONT NEED/SampleScene 1.unity
-    guid: 2635cb01659e20e48a6f20b74010a945
-  - enabled: 1
-    path: Assets/Scenes/DONT NEED/515253_Network.unity
-    guid: ea4cb9828b3bc5d44b55117028fc5e70
+    path: Assets/Scenes/class3D.unity
+    guid: dccaa3725ee0e4144b2213bc29754bca
   - enabled: 1
     path: Assets/Scenes/515253_NET.unity
     guid: 819494c3800a07a4abeb99bcd81058ff
-  - enabled: 1
-    path: Assets/Scenes/bedroom 1.unity
-    guid: 24cd23c173314d44ba2c69e8538c3bd7
   - enabled: 1
     path: Assets/Scenes/Gameover.unity
     guid: 43bd188f56dbfe148810d16a1f764a56
