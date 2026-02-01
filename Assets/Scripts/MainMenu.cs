@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("515253");
+        SceneManager.LoadScene("class3D");
     }
 
     public void JumpMenu()
@@ -30,6 +30,11 @@ public class MainMenu : MonoBehaviour
     public void NET()
     {
         SceneManager.LoadScene("515253_NET");
+    }
+
+    public void HOME()
+    {
+        SceneManager.LoadScene("515253");
     }
 
     public void class3D()
