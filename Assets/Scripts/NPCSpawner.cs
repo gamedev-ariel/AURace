@@ -10,7 +10,7 @@ public class NPCSpawner : MonoBehaviour
 
     void Start()
     {
-        // éöéøä øàùåðéú ùì X NPCs
+    
         for (int i = 0; i < startAmount; i++)
         {
             SpawnNPC();
@@ -27,13 +27,13 @@ public class NPCSpawner : MonoBehaviour
             {
                 SpawnNPC();
             }
-            timer = 0f; // àéôåñ äèééîø
+            timer = 0f; 
         }
     }
 
     void SpawnNPC()
     {
-        // îé÷åí øðãåîìé áîñê
+        
         Vector2 spawnPos = Camera.main.ViewportToWorldPoint(
             new Vector2(Random.value, Random.value)
         );
